@@ -6,6 +6,10 @@
 
 **MaiOpinion** is a lightweight, multi-agent AI system designed to assist with patient diagnosis and treatment planning through intelligent agent collaboration.
 
+## Download and Run: 
+.\start.ps1
+
+
 ## 🎯 Overview
 
 MaiOpinion processes diagnostic images and patient condition descriptions through a chain of **five specialized AI agents**, with intelligent routing based on image type:
