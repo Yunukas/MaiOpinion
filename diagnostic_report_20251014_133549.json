@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-10-14T13:35:49.934096",
+  "patient_condition": "Severe headache and dizziness for 2 days",
+  "image_analyzed": "patient1.png",
+  "finding": "Visual abnormality detected requiring further clinical assessment",
+  "diagnosis": "Condition requiring specialist evaluation",
+  "confidence": "low",
+  "treatment": "Specialist consultation recommended for proper diagnosis and treatment plan. Monitor symptoms and seek immediate care if condition worsens.",
+  "precautions": [
+    "Keep detailed notes of symptom progression",
+    "Avoid self-medication without professional advice",
+    "Seek emergency care if severe symptoms develop"
+  ],
+  "follow_up": "Specialist consultation recommended within 5-7 days for comprehensive evaluation.",
+  "timeline": "5-7 days",
+  "patient_instructions": "Keep a symptom diary and note any changes. Seek immediate medical attention if symptoms worsen significantly.",
+  "agent_workflow": {
+    "step_1": "Image Diagnostic Agent",
+    "step_2": "Clinical Reasoning Agent",
+    "step_3": "Treatment Agent",
+    "step_4": "Follow-Up Agent"
+  }
+}

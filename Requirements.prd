@@ -1,0 +1,142 @@
+⚡ PRD: MaiOpinion – Multi-Agent Healthcare Diagnostic Assistant (Hackathon Edition)
+Project Name: MaiOpinion
+Developer: Yunus Yurttagul
+Duration: 1 Hour (Hackathon Build)
+Environment: VS Code + GitHub + Azure AI Foundry / OpenAI API
+1. 🧭 Overview
+
+MaiOpinion is a lightweight, multi-agent AI system designed to assist with patient diagnosis and treatment planning in a fast, explainable, and modular way.
+
+It processes diagnostic images and patient condition descriptions, passing information through a chain of four agents:
+
+Image Diagnostic Agent
+
+Clinical Reasoning Agent
+
+Treatment Agent
+
+Follow-Up Agent
+
+Each agent handles one specialized task, mimicking how different medical specialists collaborate — but built in under one hour for hackathon demonstration purposes.
+
+2. 🎯 Objectives
+Goal	Description
+Demonstrate multi-agent orchestration	Each agent specializes in one stage: image analysis, reasoning, treatment, and follow-up.
+Keep it simple and runnable	Lightweight, mock data or API calls that can be executed locally via VS Code.
+Deliver impressive end-to-end output	A full “AI clinical summary” produced from one command or form submission.
+Showcase collaboration	Highlight agent interaction and information passing (modularity).
+3. ⚙️ Agent Design
+Agent	Purpose	Input	Output
+1. Image Diagnostic Agent	Analyzes medical image (mock or Azure Vision)	Image file path + patient condition	JSON with visual findings (e.g., “Possible cavity in molar region”).
+2. Clinical Reasoning Agent	Infers diagnosis from findings and condition text	Diagnostic findings JSON + symptom description	JSON with probable diagnosis + reasoning.
+3. Treatment Agent	Suggests treatments or next steps	Diagnosis JSON + patient info	JSON with recommended treatments and precautions.
+4. Follow-Up Agent	Generates follow-up plan	Treatment JSON	JSON with care reminders, check-up intervals, and motivational patient note.
+4. 🧩 Architecture (Simplified)
+[User Input: Image + Condition]
+      ↓
+[Image Diagnostic Agent]
+      ↓ JSON
+[Clinical Reasoning Agent]
+      ↓ JSON
+[Treatment Agent]
+      ↓ JSON
+[Follow-Up Agent]
+      ↓
+[Final Report: Diagnosis + Treatment + Follow-up Plan]
+
+
+All agents run inside a Python orchestrator script (main.py) that chains their outputs sequentially.
+
+5. 🧠 Tech Stack
+Component	Tech
+Language	Python 3.11+
+IDE	VS Code
+Repo	GitHub (with Copilot assist)
+AI Framework	Azure AI Foundry or OpenAI API
+Vision Layer	Mock response or Azure Vision API
+Data Format	JSON
+Optional UI	Minimal HTML/React or CLI interface
+Deployment	Local or Azure Function (optional)
+6. 🚀 MVP Deliverable
+Command-line demo:
+python main.py --image patient1.png --condition "Tooth pain for 3 days"
+
+Output (JSON or printed summary):
+{
+  "finding": "Possible cavity in upper molar region",
+  "diagnosis": "Dental caries (early stage)",
+  "treatment": "Dental filling recommended; reduce sugar intake; use fluoride toothpaste.",
+  "follow_up": "Check-up in 7 days to assess pain reduction. Reminder: rinse with warm salt water twice daily."
+}
+
+7. 🧱 Project Structure (for VS Code + GitHub)
+maiopinion/
+│
+├── main.py                 # Orchestrator that runs all agents
+├── requirements.txt        # Dependencies
+├── agents/
+│   ├── diagnostic.py       # Image Diagnostic Agent
+│   ├── reasoning.py        # Clinical Reasoning Agent
+│   ├── treatment.py        # Treatment Agent
+│   └── followup.py         # Follow-Up Agent
+│
+├── sample_data/
+│   └── patient1.png        # Sample image
+│
+└── README.md               # Hackathon description and usage
+
+8. 🧩 Step-by-Step Build Plan (Under 1 Hour)
+Step	Task	Est. Time
+1	Initialize GitHub repo and create project structure	5 min
+2	Implement diagnostic.py (mock or Vision API)	10 min
+3	Implement reasoning.py (OpenAI LLM prompt)	10 min
+4	Implement treatment.py (OpenAI LLM prompt)	10 min
+5	Implement followup.py (OpenAI LLM prompt)	10 min
+6	Build main.py orchestrator chaining all agents	10 min
+7	Test end-to-end with one example	5–10 min
+9. ⚡ Agent Prompt Examples
+Diagnostic Agent
+
+You are a medical imaging assistant. Analyze the following patient image description and return a short JSON with any visible issues.
+Example output: {"finding": "possible cavity in molar region"}
+
+Clinical Reasoning Agent
+
+You are a clinical reasoning assistant. Based on this finding and the patient’s symptom, suggest a possible diagnosis in structured JSON.
+Example output: {"diagnosis": "dental caries", "confidence": "high"}
+
+Treatment Agent
+
+You are a treatment advisor. Suggest evidence-based treatment options and short-term recommendations.
+Example output: {"treatment": "dental filling recommended; use fluoride toothpaste."}
+
+Follow-Up Agent
+
+You are a care coordinator. Provide a short follow-up plan for the patient including time interval and encouragement message.
+Example output:
+{"follow_up": "check-up in 7 days", "note": "keep good oral hygiene and report if pain worsens"}
+
+10. 🧪 Validation
+
+Each agent returns valid JSON (catch exceptions and retry if malformed).
+
+Orchestrator verifies presence of expected keys before proceeding.
+
+Final output displayed as pretty JSON or printed to console.
+
+11. 🏁 Hackathon Outcome
+
+✅ Fully working demo of MaiOpinion, a multi-agent AI diagnostic assistant.
+✅ Clean, modular Python project hosted on GitHub.
+✅ Demonstrates how multi-agent collaboration can simulate clinical workflow.
+✅ Optional: simple web form UI built with Flask or React.
+
+12. 🌱 Stretch Goals (If Time Allows)
+
+Store results in SQLite or JSON file.
+
+Add natural language summary for clinician presentation.
+
+Add feedback loop where user approves or corrects diagnosis.
+
+Show agent communication flow visually on web UI.
